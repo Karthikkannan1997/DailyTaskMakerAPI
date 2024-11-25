@@ -1,0 +1,6 @@
+@DailyTaskMakerAPI_HostAddress = http://localhost:5208
+
+GET {{DailyTaskMakerAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
