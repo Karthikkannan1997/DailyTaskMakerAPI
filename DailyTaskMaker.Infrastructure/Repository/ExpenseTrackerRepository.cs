@@ -67,7 +67,7 @@ namespace DailyTaskMaker.Infrastructure.Repository
             {
                     new SqlParameter("@ExpensesXmlData", convertToXml),
                     new SqlParameter("@UserEmail", userEmail),
-                    new SqlParameter("@isEdited",expenseTrackerData.Count > 0 && (expenseTrackerData[0]?.UserExpenseTrackerId != null || expenseTrackerData[0]?.UserExpenseTrackerId != 0) ? true : false),
+                    new SqlParameter("@isEdited",  (expenseTrackerData.Count == 1 && expenseTrackerData[0]?.UserExpenseTrackerId != null && expenseTrackerData[0]?.UserExpenseTrackerId != 0) ? true : false),
                     resultParameter
                 };
 
