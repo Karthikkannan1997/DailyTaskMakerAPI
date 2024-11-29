@@ -1,4 +1,5 @@
-﻿using DailyTaskMaker.Infrastructure.DataModels;
+﻿using DailyTaskMaker.Infrastructure.CommonUtilityClasses;
+using DailyTaskMaker.Infrastructure.DataModels;
 using DailyTaskMaker.Infrastructure.Interfaces;
 using DailyTaskMaker.Infrastructure.Models;
 using Microsoft.AspNetCore.Http;
@@ -63,7 +64,7 @@ namespace DailyTaskMaker.Infrastructure.Repository
             {
                 return await _dbContext.Set<UserRole>().Select(x => new
                 {
-                    RoleId = x.UserRoleId,
+                    UserRoleId = x.UserRoleId,
                     RoleName = x.RoleName
                 }).ToListAsync();
             }
@@ -72,8 +73,43 @@ namespace DailyTaskMaker.Infrastructure.Repository
                 throw;
             }
         }
-       
 
-        
+        public async Task<bool> SaveUserData(UserDetailModel userData)
+        {
+            try
+            {
+
+                var updatedBy = UserUtility.GetUserEmail(_httpContextAccessor);
+                var resultParameter = new SqlParameter
+                {
+                    ParameterName = "@Result",
+                    SqlDbType = System.Data.SqlDbType.Bit,
+                    Direction = System.Data.ParameterDirection.Output
+                };
+
+                var parameters = new[]
+                {
+                    new SqlParameter("@MobileNumber", userData.MobileNumber),
+                    new SqlParameter("@UpdatedBy", updatedBy),
+                    new SqlParameter("@EmailId",  userData.EmailId),
+                    new SqlParameter("@UserId",  userData.UserId),
+                    new SqlParameter("@RoleIds",userData.RoleIds)
+                    
+                };
+
+                await _dbContext.Database.ExecuteSqlRawAsync("EXEC Sp_SaveUserData @UserId,@EmailId,@MobileNumber,@RoleIds,@UpdatedBy,@Result OUTPUT", parameters);
+
+                return (bool)resultParameter.Value;
+
+            }
+            catch
+            {
+                return false;
+                
+            }
+        }
+
+
+
     }
 }

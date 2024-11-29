@@ -15,7 +15,7 @@ namespace DailyTaskMakerAPI.Models
         public  string? EmailId { get; set; }
 
         
-        public string ? MobileNumber { get; set; }
+        public int ? MobileNumber { get; set; }
 
         
         public  string ?  DisplayName { get; set; }

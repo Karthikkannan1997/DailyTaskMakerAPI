@@ -29,9 +29,8 @@ public partial class UserDetail
     [Unicode(false)]
     public string EmailId { get; set; }
 
-    [StringLength(15)]
-    [Unicode(false)]
-    public string MobileNumber { get; set; }
+    
+    public int? MobileNumber { get; set; }
 
     [Required]
     [StringLength(500)]

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Conventions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace DailyTaskMaker.Infrastructure.DataModels
         public string? EmailId { get; set; }
 
 
-        public string? MobileNumber { get; set; }
+        public int? MobileNumber { get; set; }
         public required List<UserRoleList> UserRoleList { get; set; }
 
     }
@@ -29,6 +30,16 @@ namespace DailyTaskMaker.Infrastructure.DataModels
         public int UserRoleId { get; set; }
 
         public required string RoleName { get; set; }
+    }
+
+    public class UserDetailModel
+    {
+        public string? EmailId { get; set;}
+        public int MobileNumber { get; set; }
+
+        public string? RoleIds { get; set; }
+
+        public int UserId { get; set; }
     }
 }
 

@@ -78,7 +78,7 @@ namespace DailyTaskMaker.Infrastructure.Repository
             }
             catch (Exception ex)
             {
-                throw;
+                return false;
             }
         }
 

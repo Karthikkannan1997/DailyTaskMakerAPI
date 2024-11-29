@@ -49,6 +49,20 @@ namespace DailyTaskMakerAPI.Controllers
             }
         }
 
+        [HttpPost("SaveUserData")]
+        public async Task<bool> SaveUserData(UserDetailModel userData)
+        {
+            try
+            {
+                return await _userRepo.SaveUserData(userData);
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
 
     }
 }
