@@ -56,5 +56,24 @@ namespace DailyTaskMaker.Infrastructure.Repository
                 throw;
             }
         }
+
+        public async Task<dynamic> GetRoles()
+        {
+            try
+            {
+                return await _dbContext.Set<UserRole>().Select(x => new
+                {
+                    RoleId = x.UserRoleId,
+                    RoleName = x.RoleName
+                }).ToListAsync();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+       
+
+        
     }
 }

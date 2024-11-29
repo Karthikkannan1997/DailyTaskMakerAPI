@@ -34,5 +34,21 @@ namespace DailyTaskMakerAPI.Controllers
                 throw;
             }
         }
+
+        [HttpGet("GetRoles")]
+        public async Task<dynamic> GetRoles()
+        {
+            try
+            {
+                return await _userRepo.GetRoles();
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+
     }
 }

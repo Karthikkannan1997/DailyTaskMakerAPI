@@ -10,5 +10,7 @@ namespace DailyTaskMaker.Infrastructure.Interfaces
     public interface IUserManagementRepository
     {
          Task<List<UserManagementListModel>> GetUserList(int skip,int take);
+
+        Task<dynamic> GetRoles();
     }
 }

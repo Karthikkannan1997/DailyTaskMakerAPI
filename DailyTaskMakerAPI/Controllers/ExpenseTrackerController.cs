@@ -55,11 +55,11 @@ namespace DailyTaskMakerAPI.Controllers
             {
                 
                 List <ExpenseTrackerResponse> expenseTrackerData = await _expenseTrackerRepo.GetExpenses(  Duration,  IsCategoryWise, Skip,Take,DateFrom, DateTo);
-                if (expenseTrackerData != null)
-                {
-                    Response.Headers.Append("X-Total-Count", expenseTrackerData.Count > 0 ? expenseTrackerData[0].TotalRows.ToString() : "0");
-                }
-                Response.Headers.Append("Access-Control-Expose-Headers", "X-Total-Count");
+                //if (expenseTrackerData != null)
+                //{
+                //    Response.Headers.Append("X-Total-Count", expenseTrackerData.Count > 0 ? expenseTrackerData[0].TotalRows.ToString() : "0");
+                //}
+                //Response.Headers.Append("Access-Control-Expose-Headers", "X-Total-Count");
                 return expenseTrackerData;
             }
             catch (Exception ex)
