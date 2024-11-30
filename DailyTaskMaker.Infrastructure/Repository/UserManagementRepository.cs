@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -36,6 +37,7 @@ namespace DailyTaskMaker.Infrastructure.Repository
                         FirstName = x.FirstName,
                         SurName = x.SurName,
                         EmailId = x.EmailId,
+                        IsActive = x.IsActive,
                         MobileNumber = x.MobileNumber,
                         UserRoleList = x.UserRoleMappings.Where(y => y.UserId == x.UserId).
                         Select( z=>new UserRoleList() {
@@ -93,11 +95,13 @@ namespace DailyTaskMaker.Infrastructure.Repository
                     new SqlParameter("@UpdatedBy", updatedBy),
                     new SqlParameter("@EmailId",  userData.EmailId),
                     new SqlParameter("@UserId",  userData.UserId),
-                    new SqlParameter("@RoleIds",userData.RoleIds)
-                    
+                    new SqlParameter("@RoleIds",userData.RoleIds),
+                    new SqlParameter("@IsActive", userData.IsActive),
+                    resultParameter
+
                 };
 
-                await _dbContext.Database.ExecuteSqlRawAsync("EXEC Sp_SaveUserData @UserId,@EmailId,@MobileNumber,@RoleIds,@UpdatedBy,@Result OUTPUT", parameters);
+                await _dbContext.Database.ExecuteSqlRawAsync("EXEC Sp_SaveUserData @UserId,@EmailId,@MobileNumber,@RoleIds,@UpdatedBy,@IsActive,@Result OUTPUT", parameters);
 
                 return (bool)resultParameter.Value;
 

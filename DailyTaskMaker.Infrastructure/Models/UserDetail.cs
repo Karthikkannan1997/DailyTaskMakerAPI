@@ -30,7 +30,7 @@ public partial class UserDetail
     public string EmailId { get; set; }
 
     
-    public int? MobileNumber { get; set; }
+    public long? MobileNumber { get; set; }
 
     [Required]
     [StringLength(500)]

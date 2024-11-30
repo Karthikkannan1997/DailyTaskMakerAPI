@@ -20,7 +20,9 @@ namespace DailyTaskMaker.Infrastructure.DataModels
         public string? EmailId { get; set; }
 
 
-        public int? MobileNumber { get; set; }
+        public long? MobileNumber { get; set; }
+
+        public bool? IsActive { get; set; }
         public required List<UserRoleList> UserRoleList { get; set; }
 
     }
@@ -35,11 +37,13 @@ namespace DailyTaskMaker.Infrastructure.DataModels
     public class UserDetailModel
     {
         public string? EmailId { get; set;}
-        public int MobileNumber { get; set; }
+        public long  MobileNumber { get; set; }
 
         public string? RoleIds { get; set; }
 
         public int UserId { get; set; }
+
+        public bool? IsActive { get; set; }
     }
 }
 
