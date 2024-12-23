@@ -42,7 +42,7 @@ CREATE TABLE UserDetail (
     FirstName VARCHAR(200) NOT NULL,           -- First name of the user
     SurName VARCHAR(200)  Null,             -- Surname of the user
     EmailID VARCHAR(500) NOT NULL,            -- Email ID of the user
-    MobileNumber int NULL,        -- Mobile number of the user
+    MobileNumber Bigint NULL,        -- Mobile number of the user
     DisplayName VARCHAR(500) NOT NULL,        -- Display name of the user
 	IsActive bit null,
     CreatedAt DATETIME DEFAULT GETDATE() Not null,-- Timestamp for when the user was created
