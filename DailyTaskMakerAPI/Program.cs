@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowSpecificOrigin",
         builder =>
         {
-            builder.WithOrigins("http://localhost:4200") // Replace with your frontend URL
+            builder.WithOrigins(["http://localhost:4200", "https://daily-task-maker-app-cmg8hnbvckedgjgu.southindia-01.azurewebsites.net"]) // Replace with your frontend URL
                    .AllowAnyHeader()
                    .AllowAnyMethod();
         });
