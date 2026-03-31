@@ -22,7 +22,8 @@ builder.Services.AddCors(options =>
         {
             builder.WithOrigins(["http://localhost:4200", "https://daily-task-maker-app-cmg8hnbvckedgjgu.southindia-01.azurewebsites.net"]) // Replace with your frontend URL
                    .AllowAnyHeader()
-                   .AllowAnyMethod();
+                   .AllowAnyMethod()
+                   .AllowCredentials();
         });
 });
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
